@@ -112,6 +112,10 @@ termux_step_create_pacman_package() {
 		echo "builddate = $BUILD_DATE"
 	} > .BUILDINFO
 
+	# Write installation hooks.
+	termux_step_create_debscripts
+	termux_step_create_pacman_install_hook
+
 	# Create package
 	shopt -s dotglob globstar
 	printf '%s\0' **/* | bsdtar -cnf - --format=mtree \

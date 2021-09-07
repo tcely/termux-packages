@@ -118,8 +118,9 @@ termux_create_pacman_subpackages() {
 			echo "builddate = $BUILD_DATE"
 		} > .BUILDINFO
 
-		# Allow packages to create arbitrary control files.
-		#termux_step_create_subpkg_debscripts
+		# Write package installation hooks.
+		termux_step_create_subpkg_debscripts
+		termux_step_create_pacman_install_hook
 
 		# Configuring the selection of a copress for a batch.
 		local COMPRESS

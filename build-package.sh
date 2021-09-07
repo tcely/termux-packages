@@ -240,6 +240,11 @@ termux_step_create_debscripts() {
 	return
 }
 
+# Convert Debian maintainer scripts into pacman-compatible installation hooks.
+# This is used only when creating pacman packages.
+# shellcheck source=scripts/build/termux_step_create_pacman_install_hook.sh
+source "$TERMUX_SCRIPTDIR/scripts/build/termux_step_create_pacman_install_hook.sh"
+
 # Create the build deb file. Not to be overridden by package scripts.
 # shellcheck source=scripts/build/termux_step_create_debian_package.sh
 source "$TERMUX_SCRIPTDIR/scripts/build/termux_step_create_debian_package.sh"
